@@ -40,12 +40,15 @@ public class AuthServlet extends HttpServlet {
 			if(resultSet.next()) {
 				 //Go to home.jsp
 				//Below line will forward your request from servlet to the JSP
+				int aid=resultSet.getInt(1);
 				String name=resultSet.getString(4);
 				String email=resultSet.getString(5);
 				String gender=resultSet.getString(6);
 				String photo=resultSet.getString(7);
 				Timestamp doe=resultSet.getTimestamp(8);
+				String role=resultSet.getString(9);
 				ProfileDTO profileDTO=new ProfileDTO();
+				profileDTO.setAid(aid);
 				profileDTO.setName(name);
 				profileDTO.setEmail(email);
 				profileDTO.setGender(gender);
@@ -53,8 +56,9 @@ public class AuthServlet extends HttpServlet {
 				profileDTO.setUsername(username);
 				profileDTO.setPassword(password);
 				profileDTO.setDoe(doe);
+				profileDTO.setRole(role);
 				//Hey I need this data on home.jsp
-				req.setAttribute("profileDTO", profileDTO);
+				req.setAttribute("magic", profileDTO);
 				req.getRequestDispatcher("home.jsp").forward(req, resp);
 			}else {
 				 //go to login.jsp

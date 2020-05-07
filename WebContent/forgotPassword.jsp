@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
- <title>Login</title>
+ <title>Forgot Password</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -23,21 +23,20 @@
       <span style="font-size: 18px;color: red;">${msg}</span>
       <br/>
       <div style="width: 50%">
-      <form action="auth">
-      <label><b>Username</b></label>
-      <input type="text" name="username"  class="form-control">
-       <label><b>Password</b></label>
-      <input type="password" name="password"  class="form-control">
+      <form action="forgotPassword">
+      <label><b>Email Id</b></label>
+      <input type="email" name="email"  class="form-control"  value="${param.email}">
       <br/>
-      <button type="submit" class="btn btn-primary">Login</button>
-      <button type="reset" class="btn btn-info">Clear</button>
-       <a href="register.jsp">
-    	  <button type="button" class="btn btn-danger">Register</button>
+   <a href="forgotPassword.jsp">
+    	  <button type="submit" class="btn btn-primary">Forgot Pass</button>
+      </a>
+       <a href="login.jsp">
+    	  <button type="button" class="btn btn-danger">Login</button>
       </a>
       
-        <a href="forgotPassword.jsp">
-    	  <button type="button" class="btn btn-warning">Forgot Pass</button>
-      </a>
+      <hr/>
+      <h5 style="color: red;font-weight: bold;">${password}</h5>
+     
       </form>
       </div>
    </div>

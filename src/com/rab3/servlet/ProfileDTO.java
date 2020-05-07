@@ -11,8 +11,17 @@ public class ProfileDTO {
 	private String gender;
 	private String image;
 	private Timestamp doe;
+	private String role;
 	
 	
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
 	public Timestamp getDoe() {
 		return doe;
 	}

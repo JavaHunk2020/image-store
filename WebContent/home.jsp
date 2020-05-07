@@ -18,12 +18,16 @@
 <body>
 	<header style="height: 30px; background-color: #03a9f4;"> </header>
 	<div class="container">
-		<br /> <img src="${profileDTO.image}" style="height: 150px;"
+		<br /> <img src="${magic.image}" style="height: 150px;"
 			class="img-thumbnail"> <img src="images/sleeping.png"
 			style="height: 150px;" class="img-thumbnail"> <img
 			src="images/student.png" style="height: 150px;" class="img-thumbnail">
 		<hr />
-		<h2>Hello ! We welcome you   ${profileDTO.name}!!!!!!!!!!!!!!!!!!!!!!!</h2>
+		<h4>Hello ! We welcome you   ${magic.name}!!!!!!!!!!!!!!!!!!!!!!!</h4>
+		<h4>Email : ${magic.email}</h4>
+			<h4>Gender : ${magic.gender}</h4>
+				<h4>Role : ${magic.role}</h4>
+				<h4>Unique Id : ${magic.aid}</h4>
 		<img src="images/welcome.png" class="rounded-circle">
 		<hr />
 		<a href="login.jsp">
