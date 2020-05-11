@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.rab3.utils.AppDBConnection;
+
 //Do not forgot to write forward slash here 
 @WebServlet("/deleteProfile")
 public class DeleteProfileServlet extends HttpServlet {
@@ -22,11 +24,7 @@ public class DeleteProfileServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String uname=req.getParameter("uname");
 		try {
-			//Loading Driver
-			Class.forName("com.mysql.jdbc.Driver");
-			//Creating connection
-			Connection connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/happy_hrs_db","root","mysql@1234");
-			String sql="delete  from  profiles_tbl where username =?";
+			Connection connection=AppDBConnection.getConnection();	String sql="delete  from  profiles_tbl where username =?";
 			//compiling the query
 			PreparedStatement pstmt=connection.prepareStatement(sql);
 			//setting values inside the compiled query

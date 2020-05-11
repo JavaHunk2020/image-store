@@ -2,7 +2,6 @@ package com.rab3.servlet;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
@@ -15,6 +14,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.rab3.dto.ProfileDTO;
+import com.rab3.utils.AppDBConnection;
+
 //Do not forgot to write forward slash here 
 @WebServlet("/profiles")
 public class ProfilesServlet extends HttpServlet {
@@ -25,10 +27,8 @@ public class ProfilesServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
-			//Loading Driver
-			Class.forName("com.mysql.jdbc.Driver");
 			//Creating connection
-			Connection connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/happy_hrs_db","root","mysql@1234");
+			Connection connection=AppDBConnection.getConnection();
 			String sql="select  aid,username,password,name,email,gender,photo,doe,role  from profiles_tbl";
 			//compiling the query
 			PreparedStatement pstmt=connection.prepareStatement(sql);

@@ -2,7 +2,6 @@ package com.rab3.servlet;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
@@ -12,6 +11,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.rab3.dto.ProfileDTO;
+import com.rab3.utils.AppDBConnection;
 
 //Do not forgot to write forward slash here 
 @WebServlet("/auth")
@@ -25,10 +28,8 @@ public class AuthServlet extends HttpServlet {
 		String username=req.getParameter("username");
 		String password=req.getParameter("password");
 		try {
-			//Loading Driver
-			Class.forName("com.mysql.jdbc.Driver");
 			//Creating connection
-			Connection connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/happy_hrs_db","root","mysql@1234");
+			Connection connection=AppDBConnection.getConnection();
 			String sql="select  *  from profiles_tbl where username =? and password = ?";
 			//compiling the query
 			PreparedStatement pstmt=connection.prepareStatement(sql);
@@ -58,6 +59,9 @@ public class AuthServlet extends HttpServlet {
 				profileDTO.setDoe(doe);
 				profileDTO.setRole(role);
 				//Hey I need this data on home.jsp
+				//Create the session for the user
+				HttpSession  session=req.getSession();
+				session.setAttribute("profileDTO", profileDTO);
 				req.setAttribute("magic", profileDTO);
 				req.getRequestDispatcher("home.jsp").forward(req, resp);
 			}else {

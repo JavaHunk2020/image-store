@@ -1,4 +1,4 @@
-package com.rab3.servlet;
+package com.rab3.dto;
 
 import java.sql.Timestamp;
 
