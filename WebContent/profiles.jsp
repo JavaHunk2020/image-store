@@ -1,5 +1,5 @@
 <%@page import="java.util.List"%>
-<%@page import="com.rab3.servlet.ProfileDTO"%>
+<%@page import="com.rab3.dto.ProfileDTO"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -60,6 +60,10 @@
           <a href="deleteProfile?uname=<%=dto.getUsername() %>">
          <img src="images/icons8-delete-100.png"  style="height: 80px;">
          </a>
+         &nbsp;  &nbsp;  &nbsp;
+         <a href="editProfile?aid=<%=dto.getAid() %>">
+					<img src="images/edit.png" style="height: 24px;">
+				</a>
          </td>
       </tr>
    <%} %>

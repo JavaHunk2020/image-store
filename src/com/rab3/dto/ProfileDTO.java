@@ -2,6 +2,11 @@ package com.rab3.dto;
 
 import java.sql.Timestamp;
 
+/**
+ * 
+ * @author nagendra
+ *
+ */
 public class ProfileDTO {
 	private int aid;
 	private String username;
